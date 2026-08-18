@@ -1,0 +1,111 @@
+---
+interface Props {
+	id: string;
+	class?: string;
+}
+
+const { id, class: className = '' } = Astro.props;
+const pink = '#E84C89';
+const pinkSoft = '#FFD6E4';
+---
+
+<span
+	class:list={[
+		'relative grid size-12 shrink-0 place-items-center rounded-full bg-blush-soft',
+		className,
+	]}
+	aria-hidden="true"
+>
+	<span
+		class="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_35%_30%,#fff_0%,#ffe8ee_55%,#ffd6e0_100%)]"
+	></span>
+
+	{
+		id === 'mae-bebe' && (
+			<svg class="relative size-7" viewBox="0 0 48 48" fill="none">
+				<path
+					d="M18 14h12a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H18a3 3 0 0 1-3-3V17a3 3 0 0 1 3-3Z"
+					stroke={pink}
+					stroke-width="2.2"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M21 14V11a3 3 0 0 1 6 0v3"
+					stroke={pink}
+					stroke-width="2.2"
+					stroke-linecap="round"
+				/>
+				<rect x="20" y="22" width="8" height="10" rx="1.5" fill={pinkSoft} stroke={pink} stroke-width="1.8" />
+				<path
+					d="M33 30c0-2.2-1.4-3.8-3.2-3.8-1 0-1.9.5-2.5 1.3-.6-.8-1.5-1.3-2.5-1.3-1.8 0-3.2 1.6-3.2 3.8 0 3.5 5.7 6.4 5.7 6.4s5.7-2.9 5.7-6.4Z"
+					fill={pink}
+					opacity="0.9"
+				/>
+			</svg>
+		)
+	}
+
+	{
+		id === 'casa' && (
+			<svg class="relative size-7" viewBox="0 0 48 48" fill="none">
+				<path
+					d="M8 22 24 10l16 12v16a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V22Z"
+					stroke={pink}
+					stroke-width="2.2"
+					stroke-linejoin="round"
+				/>
+				<path d="M20 40V28h8v12" stroke={pink} stroke-width="2.2" stroke-linejoin="round" />
+				<circle cx="34" cy="16" r="2.2" fill={pinkSoft} stroke={pink} stroke-width="1.6" />
+				<path
+					d="M32.8 19.6c.8-1.1 2.4-1.1 3.2 0"
+					stroke={pink}
+					stroke-width="1.6"
+					stroke-linecap="round"
+				/>
+			</svg>
+		)
+	}
+
+	{
+		id === 'beleza' && (
+			<svg class="relative size-7" viewBox="0 0 48 48" fill="none">
+				<path d="M20 8h8l2 10H18l2-10Z" stroke={pink} stroke-width="2.2" stroke-linejoin="round" />
+				<path d="M16 18h16v5H16z" stroke={pink} stroke-width="2.2" />
+				<path
+					d="M18 23h12v13a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 18 36V23Z"
+					stroke={pink}
+					stroke-width="2.2"
+				/>
+				<ellipse cx="34" cy="30" rx="5" ry="4.5" fill={pinkSoft} stroke={pink} stroke-width="1.8" />
+				<path d="M32 30h4" stroke={pink} stroke-width="1.6" stroke-linecap="round" />
+			</svg>
+		)
+	}
+
+	{
+		id === 'fitness' && (
+			<svg class="relative size-7" viewBox="0 0 48 48" fill="none">
+				<rect x="6" y="16" width="5" height="16" rx="1.5" fill={pinkSoft} stroke={pink} stroke-width="2" />
+				<rect x="37" y="16" width="5" height="16" rx="1.5" fill={pinkSoft} stroke={pink} stroke-width="2" />
+				<path d="M14 18v12M34 18v12" stroke={pink} stroke-width="2.4" stroke-linecap="round" />
+				<path d="M14 24h20" stroke={pink} stroke-width="2.6" stroke-linecap="round" />
+			</svg>
+		)
+	}
+
+	{
+		id === 'pet' && (
+			<svg class="relative size-7" viewBox="0 0 48 48" fill="none">
+				<ellipse cx="24" cy="31" rx="8.5" ry="7" fill={pinkSoft} stroke={pink} stroke-width="2" />
+				<circle cx="14" cy="18" r="3.3" fill={pinkSoft} stroke={pink} stroke-width="1.8" />
+				<circle cx="22" cy="14" r="3.3" fill={pinkSoft} stroke={pink} stroke-width="1.8" />
+				<circle cx="30" cy="14" r="3.3" fill={pinkSoft} stroke={pink} stroke-width="1.8" />
+				<circle cx="34" cy="20" r="3.3" fill={pinkSoft} stroke={pink} stroke-width="1.8" />
+				<path
+					d="M33 34c0-1.6-1.1-2.8-2.4-2.8-.7 0-1.3.4-1.7 1-.4-.6-1-.9-1.7-.9-1.3 0-2.4 1.2-2.4 2.8 0 2.6 4.1 4.7 4.1 4.7s4.1-2.1 4.1-4.7Z"
+					fill={pink}
+				/>
+			</svg>
+		)
+	}
+</span>

@@ -1,0 +1,48 @@
+---
+import Icon from './Icon.astro';
+
+interface Category {
+	id: string;
+	title: string;
+	description: string;
+	whatsappUrl: string;
+}
+
+interface Props {
+	category: Category;
+}
+
+const { category } = Astro.props;
+---
+
+<a
+	href={category.whatsappUrl}
+	target="_blank"
+	rel="noopener noreferrer"
+	class="group flex items-center gap-3.5 rounded-2xl border border-pink/15 bg-white px-3 py-3 transition duration-200 hover:border-pink/35 hover:bg-[#fffbfc] active:translate-y-0 motion-safe:hover:-translate-y-0.5"
+>
+	<span class="relative grid size-[4.85rem] shrink-0 place-items-center">
+		<img
+			src="/assets/categories/padrao.png"
+			alt=""
+			width="480"
+			height="480"
+			class="size-[4.85rem] object-contain drop-shadow-[0_8px_14px_rgba(232,76,137,0.2)]"
+			decoding="async"
+			loading="lazy"
+		/>
+	</span>
+
+	<span class="min-w-0 flex-1 py-0.5">
+		<span class="block text-[15px] font-extrabold leading-tight text-ink">{category.title}</span>
+		<span class="mt-0.5 block text-pretty text-[12.5px] leading-snug text-muted">{category.description}</span>
+	</span>
+
+	<span
+		class="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-pink to-pink-deep text-white shadow-[0_4px_10px_rgba(232,76,137,0.28)] transition group-hover:brightness-105"
+		aria-hidden="true"
+	>
+		<Icon name="whatsapp" class="size-5" />
+		<span class="sr-only">Abrir WhatsApp</span>
+	</span>
+</a>

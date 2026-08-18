@@ -1,0 +1,123 @@
+---
+interface Props {
+	name: string;
+	class?: string;
+}
+
+const { name, class: className = 'size-7' } = Astro.props;
+---
+
+{
+	name === 'baby' && (
+		<svg class={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+			<circle cx="24" cy="20" r="10" stroke="currentColor" stroke-width="2.2" />
+			<path
+				d="M14 34c2.5-4 6.2-6 10-6s7.5 2 10 6"
+				stroke="currentColor"
+				stroke-width="2.2"
+				stroke-linecap="round"
+			/>
+			<circle cx="20.5" cy="19" r="1.4" fill="currentColor" />
+			<circle cx="27.5" cy="19" r="1.4" fill="currentColor" />
+			<path d="M22 23.5c.7.8 2.3.8 3 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+			<path d="M16 12c1.2-3 3.8-4.8 8-4.8S30.8 9 32 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+		</svg>
+	)
+}
+{
+	name === 'home' && (
+		<svg class={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+			<path
+				d="M8 22 L24 10 L40 22 V38a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V22Z"
+				stroke="currentColor"
+				stroke-width="2.2"
+				stroke-linejoin="round"
+			/>
+			<path d="M20 40V28h8v12" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+		</svg>
+	)
+}
+{
+	name === 'lipstick' && (
+		<svg class={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+			<path d="M20 8h8l2 10H18l2-10Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+			<path d="M16 18h16v6H16z" stroke="currentColor" stroke-width="2.2" />
+			<path d="M18 24h12v14a3 3 0 0 1-3 3H21a3 3 0 0 1-3-3V24Z" stroke="currentColor" stroke-width="2.2" />
+			<path d="M21 30h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+		</svg>
+	)
+}
+{
+	name === 'bed' && (
+		<svg class={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+			<path d="M8 28h32v8H8z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+			<path d="M8 28V18a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10" stroke="currentColor" stroke-width="2.2" />
+			<path d="M26 24h10a4 4 0 0 1 4 4v0" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+			<path d="M10 36v4M38 36v4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+		</svg>
+	)
+}
+{
+	name === 'dumbbell' && (
+		<svg class={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+			<path d="M14 18v12M34 18v12M10 20v8M38 20v8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+			<path d="M14 24h20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+			<rect x="6" y="16" width="5" height="16" rx="1.5" stroke="currentColor" stroke-width="2.2" />
+			<rect x="37" y="16" width="5" height="16" rx="1.5" stroke="currentColor" stroke-width="2.2" />
+		</svg>
+	)
+}
+{
+	name === 'paw' && (
+		<svg class={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+			<ellipse cx="24" cy="30" rx="8" ry="7" stroke="currentColor" stroke-width="2.2" />
+			<circle cx="14" cy="18" r="3.2" stroke="currentColor" stroke-width="2" />
+			<circle cx="22" cy="14" r="3.2" stroke="currentColor" stroke-width="2" />
+			<circle cx="30" cy="14" r="3.2" stroke="currentColor" stroke-width="2" />
+			<circle cx="34" cy="20" r="3.2" stroke="currentColor" stroke-width="2" />
+		</svg>
+	)
+}
+{
+	name === 'whatsapp' && (
+		<svg class={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+			<path d="M12.04 2C6.58 2 2.15 6.4 2.15 11.84c0 1.99.58 3.84 1.6 5.4L2 22l4.92-1.7a9.9 9.9 0 0 0 5.12 1.4h.01c5.46 0 9.89-4.4 9.89-9.84C21.93 6.4 17.5 2 12.04 2Zm5.5 13.95c-.23.64-1.33 1.18-1.86 1.25-.47.07-1.07.1-1.73-.11-.4-.12-.91-.3-1.57-.58-2.76-1.2-4.56-3.98-4.7-4.16-.14-.18-1.15-1.53-1.15-2.92 0-1.39.73-2.07.99-2.36.26-.28.57-.35.76-.35h.55c.17 0 .41-.07.64.49.23.58.79 2 .86 2.14.07.14.12.3.02.49-.1.18-.14.3-.28.46-.14.16-.3.36-.42.48-.14.14-.28.29-.12.56.16.28.72 1.18 1.54 1.91 1.06.95 1.95 1.24 2.23 1.38.28.14.44.12.6-.07.17-.18.7-.81.88-1.09.19-.28.37-.23.63-.14.26.1 1.66.78 1.95.92.28.14.47.21.54.33.07.12.07.69-.16 1.33Z" />
+		</svg>
+	)
+}
+{
+	name === 'instagram' && (
+		<svg class={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+			<path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm9.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+		</svg>
+	)
+}
+{
+	name === 'globe' && (
+		<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+			<circle cx="12" cy="12" r="9" />
+			<path d="M3 12h18M12 3c2.5 2.8 3.8 5.8 3.8 9S14.5 18.2 12 21c-2.5-2.8-3.8-5.8-3.8-9S9.5 5.8 12 3Z" />
+		</svg>
+	)
+}
+{
+	name === 'arrow' && (
+		<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+			<path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+		</svg>
+	)
+}
+{
+	name === 'check' && (
+		<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+			<path d="M5 12.5 10 17l9-10" stroke-linecap="round" stroke-linejoin="round" />
+		</svg>
+	)
+}
+{
+	name === 'fire' && (
+		<svg class={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+			<path d="M12 2s2.2 2.4 2.2 5.1c0 1.5-.7 2.7-1.5 3.6.9-.3 1.9-1.1 2.5-2.3.7 1.4.9 3 .6 4.5-.5 2.5-2.4 4.3-4.8 4.9 2.8-.2 5.3-2.2 6.1-5 .7-2.4.2-4.8-1.2-6.7C17.2 8.5 18 10.6 18 12.5 18 16.6 14.9 20 11.2 20 7.3 20 4.2 16.7 4.2 12.5 4.2 8.8 6.4 5.7 9 4c-.3 1.5.1 3.2 1.2 4.3C9.5 6.5 10.4 3.8 12 2Z" />
+		</svg>
+	)
+}

@@ -1,0 +1,17 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = 'w-[220px]' } = Astro.props;
+---
+
+<img
+	src="/assets/logo.png"
+	alt="Comprei Testei"
+	width="1254"
+	height="1254"
+	class:list={['mx-auto block h-auto w-full max-w-[220px] select-none sm:max-w-[240px]', className]}
+	decoding="async"
+	loading="eager"
+/>

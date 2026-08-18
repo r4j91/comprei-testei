@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#FFF5F7"/>
+  <circle cx="32" cy="32" r="22" stroke="#F06A9B" stroke-width="2.5"/>
+  <path d="M24 18h16v4c0 1-1 2-2 2h-12c-1 0-2-1-2-2v-4Z" stroke="#F06A9B" stroke-width="2" stroke-linejoin="round"/>
+  <text x="32" y="36" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="9" font-weight="800" fill="#1F1F1F">COMPREI</text>
+  <path d="M42 42.5l2.2 2.2 4-4" stroke="#F06A9B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

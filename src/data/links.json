@@ -1,0 +1,84 @@
+{
+  "brand": {
+    "name": "Comprei Testei",
+    "tagline": "de amiga para amiga ♡",
+    "headline": "Ofertas boas, de amiga para amiga. ❤️",
+    "subheadline": "Escolha os grupos que combinam com você ↓",
+    "footer": "Aqui a gente compartilha o que vale a pena para você comprar melhor e gastar menos!",
+    "instagramUrl": "https://instagram.com/compreitestei",
+    "websiteUrl": "https://compreitestei.com.br",
+    "instagramLabel": "Siga o CompreiTestei no Instagram",
+    "websiteLabel": "Reviews completos e testes CompreiTestei.com.br"
+  },
+  "categories": [
+    {
+      "id": "mae-bebe",
+      "title": "Mãe & Bebê",
+      "description": "Ofertas, achadinhos e economia para mães",
+      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_MAE_BEBE"
+    },
+    {
+      "id": "casa",
+      "title": "Casa & Organização",
+      "description": "Para facilitar e deixar a casa linda",
+      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_CASA"
+    },
+    {
+      "id": "beleza",
+      "title": "Beleza",
+      "description": "Beleza e autocuidado pagando menos",
+      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_BELEZA"
+    },
+    {
+      "id": "fitness",
+      "title": "Fitness",
+      "description": "Roupas, acessórios e achadinhos fitness",
+      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_FITNESS"
+    },
+    {
+      "id": "pet",
+      "title": "Pet",
+      "description": "Ofertas para nossos bichinhos",
+      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_PET"
+    }
+  ],
+  "stores": [
+    {
+      "id": "shopee",
+      "name": "Shopee",
+      "url": "https://shopee.com.br"
+    },
+    {
+      "id": "mercado-livre",
+      "name": "Mercado Livre",
+      "url": "https://www.mercadolivre.com.br"
+    },
+    {
+      "id": "tiktok-shop",
+      "name": "TikTok Shop",
+      "url": "https://shop.tiktok.com"
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "url": "https://www.amazon.com.br"
+    }
+  ],
+  "legend": {
+    "title": "Como funcionam nossas indicações?",
+    "items": [
+      {
+        "id": "tested",
+        "label": "TESTADO POR MIM ✓",
+        "text": "Eu realmente usei e conto o que achei.",
+        "tone": "pink"
+      },
+      {
+        "id": "found",
+        "label": "OFERTA ENCONTRADA 🔥",
+        "text": "Uma promoção que encontramos para você — mesmo que ainda não tenhamos testado.",
+        "tone": "fire"
+      }
+    ]
+  }
+}
