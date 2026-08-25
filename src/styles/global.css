@@ -4,18 +4,27 @@
 	--color-blush: #fff5f7;
 	--color-blush-soft: #ffe8ee;
 	--color-blush-mid: #ffd6e0;
-	--color-pink: #f06a9b;
+	--color-pink: #e84c89;
 	--color-pink-hot: #ec5f93;
-	--color-pink-deep: #e84c89;
+	--color-pink-deep: #d63d78;
 	--color-pink-ink: #c73d72;
 	--color-cream: #f7efe6;
 	--color-cream-btn: #f3e6d8;
-	--color-ink: #1f1f1f;
-	--color-muted: #575757;
+	--color-ink: #1a1d23;
+	--color-muted: #6a4450;
 	--color-fire: #f4a261;
 	--color-fire-soft: #ffe8d6;
+	--color-gold: #f5b942;
+	--color-wa: #128c7e;
+	--color-wa-deep: #0e7a6e;
+	--color-leaf: #2f9e6a;
+	--color-leaf-soft: #e4f6ec;
+	--color-error: #b42339;
+	--color-error-soft: #fde8ec;
 	--font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
-	--font-script: "Caveat", cursive;
+	--font-script: "Itim", "Nunito", ui-sans-serif, cursive;
+	--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+	--shadow-invite: 0 3px 8px rgba(232, 76, 137, 0.12);
 }
 
 @layer base {
@@ -31,6 +40,20 @@
 		text-rendering: optimizeLegibility;
 	}
 
+	h1,
+	h2 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-pink);
+		outline-offset: 3px;
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		html {
 			scroll-behavior: auto;
@@ -43,5 +66,36 @@
 			animation-iteration-count: 1 !important;
 			transition-duration: 0.01ms !important;
 		}
+	}
+}
+
+@layer components {
+	.invite {
+		box-shadow: var(--shadow-invite);
+		transition:
+			background-color 220ms var(--ease-out-quart),
+			box-shadow 220ms var(--ease-out-quart);
+	}
+
+	.invite:hover {
+		background-color: #fffafc;
+		box-shadow: 0 4px 8px rgba(232, 76, 137, 0.18);
+	}
+
+	.wa-seal {
+		transition: filter 220ms var(--ease-out-quart);
+	}
+
+	.wa-cta {
+		box-shadow: 0 4px 14px rgba(18, 140, 126, 0.28);
+		transition:
+			background-color 220ms var(--ease-out-quart),
+			box-shadow 220ms var(--ease-out-quart),
+			filter 220ms var(--ease-out-quart);
+	}
+
+	.wa-cta:hover {
+		background-color: var(--color-wa-deep);
+		box-shadow: 0 5px 16px rgba(14, 122, 110, 0.34);
 	}
 }

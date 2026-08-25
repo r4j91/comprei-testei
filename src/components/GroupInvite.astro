@@ -1,0 +1,54 @@
+---
+import Icon from './Icon.astro';
+
+interface Group {
+	eyebrow: string;
+	title: string;
+	description: string;
+	silentLabel: string;
+	cta: string;
+	overflow: string;
+	whatsappUrl: string;
+}
+
+interface Props {
+	group: Group;
+}
+
+const { group } = Astro.props;
+---
+
+<article class="rounded-2xl bg-white px-4 py-4 text-center shadow-[0_3px_8px_rgba(232,76,137,0.12)] sm:px-5 sm:py-5">
+	<p class="text-[0.72rem] font-extrabold uppercase tracking-[0.12em] text-pink">
+		{group.eyebrow}
+	</p>
+	<h2 class="mt-1.5 text-[1.22rem] font-extrabold leading-tight tracking-[-0.02em] text-ink sm:text-[1.32rem]">
+		{group.title}
+	</h2>
+	<p class="mx-auto mt-1.5 max-w-[34ch] text-[0.88rem] leading-snug text-muted">
+		{group.description}
+	</p>
+
+	<p
+		class="mx-auto mt-3 inline-flex max-w-full items-center gap-1.5 rounded-full bg-blush-soft px-3 py-1 text-[0.75rem] font-semibold leading-snug text-muted"
+	>
+		<Icon name="lock" class="size-3.5 shrink-0 text-gold" />
+		<span>{group.silentLabel}</span>
+	</p>
+
+	<a
+		href={group.whatsappUrl}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="wa-cta mt-3.5 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-wa px-4 text-[0.92rem] font-extrabold uppercase tracking-[0.04em] text-white"
+	>
+		<Icon name="whatsapp" class="size-5 shrink-0" />
+		<span>{group.cta}</span>
+		<Icon name="arrow" class="size-4 shrink-0 opacity-90" />
+	</a>
+
+	<p class="mt-2.5 text-[0.75rem] leading-snug text-muted">
+		{group.overflow}
+		<span aria-hidden="true"> 💗</span>
+	</p>
+</article>

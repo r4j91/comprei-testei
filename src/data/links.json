@@ -2,46 +2,48 @@
   "brand": {
     "name": "Comprei Testei",
     "tagline": "de amiga para amiga ♡",
-    "headline": "Ofertas boas, de amiga para amiga. ❤️",
-    "subheadline": "Escolha os grupos que combinam com você ↓",
+    "headline": "Achadinhos que valem o seu dinheiro 💗",
+    "subheadline": "Porque a vida da mulher não cabe em uma categoria só.",
+    "catchphrase": "Se é frescura, não sei... então que sejamos frescas 💅😂",
     "footer": "Aqui a gente compartilha o que vale a pena para você comprar melhor e gastar menos!",
-    "instagramUrl": "https://instagram.com/compreitestei",
+    "copyright": "© 2026 • Transparência sempre.",
+    "instagramUrl": "https://www.instagram.com/compreitestei.br",
     "websiteUrl": "https://compreitestei.com.br",
     "instagramLabel": "Siga o CompreiTestei no Instagram",
     "websiteLabel": "Reviews completos e testes CompreiTestei.com.br"
   },
+  "group": {
+    "eyebrow": "Grupo gratuito no WhatsApp",
+    "title": "Ofertas Comprei Testei",
+    "description": "Maternidade, casa, beleza, fitness, pet e muito mais em um só lugar.",
+    "silentLabel": "Grupo silencioso • só administradores enviam",
+    "cta": "Entrar no grupo grátis",
+    "overflow": "Se estiver cheio, você irá automaticamente para o próximo grupo.",
+    "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_GRUPO"
+  },
   "categories": [
     {
       "id": "mae-bebe",
-      "title": "Mãe & Bebê",
-      "description": "Ofertas, achadinhos e economia para mães",
-      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_MAE_BEBE"
+      "title": "Mãe & Bebê"
     },
     {
       "id": "casa",
-      "title": "Casa & Organização",
-      "description": "Para facilitar e deixar a casa linda",
-      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_CASA"
+      "title": "Casa"
     },
     {
       "id": "beleza",
-      "title": "Beleza",
-      "description": "Beleza e autocuidado pagando menos",
-      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_BELEZA"
+      "title": "Beleza"
     },
     {
       "id": "fitness",
-      "title": "Fitness",
-      "description": "Roupas, acessórios e achadinhos fitness",
-      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_FITNESS"
+      "title": "Fitness"
     },
     {
       "id": "pet",
-      "title": "Pet",
-      "description": "Ofertas para nossos bichinhos",
-      "whatsappUrl": "https://chat.whatsapp.com/SUBSTITUA_PET"
+      "title": "Pet"
     }
   ],
+  "categoriesTitle": "O que você encontra no grupo",
   "stores": [
     {
       "id": "shopee",
@@ -51,7 +53,7 @@
     {
       "id": "mercado-livre",
       "name": "Mercado Livre",
-      "url": "https://www.mercadolivre.com.br"
+      "url": "https://www.mercadolivre.com.br/social/mici9793929"
     },
     {
       "id": "tiktok-shop",
@@ -76,7 +78,7 @@
       {
         "id": "found",
         "label": "OFERTA ENCONTRADA 🔥",
-        "text": "Uma promoção que encontramos para você — mesmo que ainda não tenhamos testado.",
+        "text": "Uma promoção que encontramos para você, mesmo que ainda não tenhamos testado.",
         "tone": "fire"
       }
     ]

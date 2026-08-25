@@ -1,0 +1,32 @@
+{
+	"name": "Comprei Testei — Montar textinho",
+	"short_name": "Textinho",
+	"description": "Ferramenta privada para montar posts de afiliada no WhatsApp.",
+	"start_url": "/gerar/",
+	"scope": "/gerar/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#fff5f7",
+	"theme_color": "#e84c89",
+	"lang": "pt-BR",
+	"icons": [
+		{
+			"src": "/gerar/icons/icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/gerar/icons/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/gerar/icons/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
+}

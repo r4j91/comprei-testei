@@ -1,0 +1,498 @@
+---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import Logo from '../components/Logo.astro';
+import Sparkle from '../components/Sparkle.astro';
+import StoreLogo from '../components/StoreLogo.astro';
+import { STORES } from '../lib/affiliate';
+import { SEALS } from '../lib/copy';
+
+const storeHints: Record<string, string> = {
+	amazon: 'Cole um link de produto gerado no Associates. Precisa ter ?tag= no final.',
+	'mercado-livre': 'Cole um link de produto gerado no painel de afiliada, não o do perfil.',
+	shopee: 'Cole o link comprido gerado no portal (com uls_trackid), não o s.shopee.',
+	'tiktok-shop': 'Cole um link de produto gerado no painel de afiliada da TikTok Shop.',
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="description" content="Ferramenta privada para montar o textinho de afiliada do Comprei Testei." />
+		<meta name="theme-color" content="#e84c89" />
+		<link rel="manifest" href="/gerar/manifest.webmanifest" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-mobile-web-app-title" content="Textinho" />
+		<link rel="apple-touch-icon" href="/gerar/icons/apple-touch-icon.png" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Itim&family=Nunito:wght@500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Montar o textinho — Comprei Testei</title>
+	</head>
+	<body class="min-h-dvh">
+		<div
+			class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,#ffe4ec_0%,#fff5f7_42%,#fffaf8_100%)]"
+		>
+		</div>
+
+		<main class="relative mx-auto w-full max-w-[430px] px-4 pb-28 pt-3 sm:px-5 lg:max-w-[920px] lg:pb-10 lg:pt-5">
+			<section id="view-setup" class="mx-auto max-w-[430px] pt-6">
+				<Sparkle class="absolute left-6 top-4 size-3 text-gold" />
+				<Logo class="max-w-[128px]" />
+				<div class="mt-5 rounded-2xl bg-white px-5 py-6 shadow-[0_3px_8px_rgba(232,76,137,0.12)]">
+					<div class="grid size-11 place-items-center rounded-full bg-blush-soft text-pink">
+						<Icon name="lock" class="size-5" />
+					</div>
+					<h1 class="mt-3 text-[1.35rem] font-extrabold tracking-[-0.02em] text-ink">Essa página é só sua</h1>
+					<p class="mt-1.5 text-[0.95rem] font-semibold leading-snug text-muted">
+						Cria uma senha para os códigos de afiliada ficarem neste aparelho. O site do grupo continua público.
+					</p>
+					<form id="form-setup" class="mt-5 flex flex-col gap-3">
+						<div>
+							<label for="setup-pin" class="text-[0.85rem] font-extrabold text-ink">Senha</label>
+							<input
+								id="setup-pin"
+								class="field mt-1"
+								type="password"
+								name="pin"
+								autocomplete="new-password"
+								minlength="4"
+								required
+							/>
+						</div>
+						<div>
+							<label for="setup-pin-confirm" class="text-[0.85rem] font-extrabold text-ink">Repetir senha</label>
+							<input
+								id="setup-pin-confirm"
+								class="field mt-1"
+								type="password"
+								name="pin-confirm"
+								autocomplete="new-password"
+								minlength="4"
+								required
+							/>
+						</div>
+						<p id="setup-error" class="error-msg" hidden></p>
+						<button class="primary-btn" type="submit">Guardar senha</button>
+					</form>
+				</div>
+			</section>
+
+			<section id="view-unlock" class="mx-auto max-w-[430px] pt-6" hidden>
+				<Logo class="max-w-[128px]" />
+				<div class="mt-5 rounded-2xl bg-white px-5 py-6 shadow-[0_3px_8px_rgba(232,76,137,0.12)]">
+					<div class="grid size-11 place-items-center rounded-full bg-blush-soft text-pink">
+						<Icon name="lock" class="size-5" />
+					</div>
+					<h1 class="mt-3 text-[1.35rem] font-extrabold tracking-[-0.02em] text-ink">Oi, entra aí</h1>
+					<p class="mt-1.5 text-[0.95rem] font-semibold leading-snug text-muted">
+						Digite a senha deste aparelho para montar o textinho com os seus links.
+					</p>
+					<form id="form-unlock" class="mt-5 flex flex-col gap-3">
+						<div>
+							<label for="unlock-pin" class="text-[0.85rem] font-extrabold text-ink">Senha</label>
+							<input
+								id="unlock-pin"
+								class="field mt-1"
+								type="password"
+								name="pin"
+								autocomplete="current-password"
+								required
+							/>
+						</div>
+						<p id="unlock-error" class="error-msg" hidden></p>
+						<button class="primary-btn" type="submit">Entrar</button>
+					</form>
+					<button
+						id="forgot-pin"
+						class="mt-3 w-full py-2 text-center text-[0.85rem] font-bold text-muted underline decoration-pink/40 underline-offset-4"
+						type="button"
+					>
+						Esqueci a senha
+					</button>
+					<div id="wipe-confirm" class="mt-3 rounded-2xl bg-error-soft px-3 py-3" hidden>
+						<p class="text-[0.85rem] font-semibold leading-snug text-error">
+							Isso apaga a senha e os códigos salvos neste aparelho. Os painéis das lojas continuam iguais.
+						</p>
+						<div class="mt-2 flex gap-2">
+							<button id="wipe-confirm-btn" class="primary-btn flex-1 !bg-error" type="button">Apagar neste aparelho</button>
+							<button id="wipe-cancel" class="ghost-btn flex-1" type="button">Manter</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="view-app" hidden>
+				<header class="flex items-start justify-between gap-3">
+					<div>
+						<Logo class="mx-0 max-w-[108px]" />
+						<h1 class="mt-1 text-[1.28rem] font-extrabold tracking-[-0.02em] text-ink">Montar o textinho</h1>
+						<p class="mt-0.5 max-w-[36ch] text-[0.88rem] font-semibold leading-snug text-muted">
+							Cola o link do produto, escolhe os selos, copia e manda no grupo.
+						</p>
+					</div>
+					<button
+						id="settings-toggle"
+						class="mt-1 inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border border-pink/20 bg-white px-3 text-[0.8rem] font-extrabold text-ink"
+						type="button"
+						aria-expanded="false"
+						aria-controls="settings-panel"
+					>
+						<Icon name="gear" class="size-4 text-pink" />
+						Configurações
+					</button>
+				</header>
+
+				<div
+					id="settings-panel"
+					class="mt-4 rounded-2xl border border-dashed border-pink/45 bg-blush-soft/80 px-3.5 py-3.5"
+					hidden
+				>
+					<h2 class="text-[0.95rem] font-extrabold text-ink">Configurações</h2>
+					<p class="mt-1 text-[0.82rem] font-semibold leading-snug text-muted">
+						Edite os textos dos selos e guarde os códigos de afiliada. Tudo fica só neste aparelho.
+					</p>
+
+					<section class="mt-4" aria-labelledby="seal-copy-title">
+						<h3 id="seal-copy-title" class="text-[0.9rem] font-extrabold text-ink">Textos dos selos</h3>
+						<p class="mt-1 text-[0.78rem] font-semibold leading-snug text-muted">
+							Altere o título e a mensagem de cada selo. A prévia atualiza na hora.
+						</p>
+						<ul class="mt-2.5 flex flex-col gap-2.5">
+							{
+								SEALS.map((item, index) => (
+									<li class="rounded-2xl bg-white px-3 py-3">
+										<p class="text-[0.82rem] font-extrabold text-ink">
+											<span aria-hidden="true">{index === 0 ? '💖' : index === 1 ? '💛' : '💚'}</span>{' '}
+											{item.label}
+										</p>
+										<label class="mt-2 block text-[0.75rem] font-extrabold text-muted" for={`seal-title-${item.id}`}>
+											Título do selo
+										</label>
+										<input
+											id={`seal-title-${item.id}`}
+											class="field mt-1 !rounded-xl !py-2.5 text-[0.88rem]"
+											type="text"
+											data-seal-title={item.id}
+											value={item.emojiLine}
+										/>
+										<label class="mt-2 block text-[0.75rem] font-extrabold text-muted" for={`seal-body-${item.id}`}>
+											Mensagem
+										</label>
+										<textarea
+											id={`seal-body-${item.id}`}
+											class="field mt-1 min-h-[4.5rem] resize-y !rounded-xl !py-2.5 text-[0.88rem]"
+											data-seal-body={item.id}
+										>
+											{item.body}
+										</textarea>
+									</li>
+								))
+							}
+						</ul>
+						<button id="reset-seal-copy" class="ghost-btn mt-2.5 w-full" type="button">
+							Restaurar textos padrão
+						</button>
+					</section>
+
+					<section class="mt-5" aria-labelledby="affiliate-codes-title">
+						<h3 id="affiliate-codes-title" class="text-[0.9rem] font-extrabold text-ink">Códigos de afiliada</h3>
+						<p class="mt-1 text-[0.78rem] font-semibold leading-snug text-muted">
+							Uma vez por loja: gere o link de qualquer produto no painel de afiliada e cole aqui.
+						</p>
+					<ul class="mt-3 flex flex-col gap-3">
+						{
+							STORES.map((store) => (
+								<li class="rounded-2xl bg-white px-3 py-3">
+									<div class="flex items-center justify-between gap-2">
+										<StoreLogo id={store.id} class="h-6 w-auto max-w-[92px]" />
+										<p id={`status-${store.id}`} class="store-status text-right text-[0.75rem] font-bold text-muted">
+											Ainda sem código nesta loja
+										</p>
+									</div>
+									<form class="mt-2 flex flex-col gap-2" data-store-form={store.id}>
+										<label class="sr-only" for={`sample-${store.id}`}>
+											Link de afiliada da {store.label}
+										</label>
+										<input
+											id={`sample-${store.id}`}
+											class="field !rounded-xl !py-2.5 text-[0.9rem]"
+											type="url"
+											inputmode="url"
+											placeholder="https://"
+											autocomplete="off"
+										/>
+										<p class="text-[0.72rem] font-semibold leading-snug text-muted">{storeHints[store.id]}</p>
+										<p class="error-msg" data-store-error hidden></p>
+										<button class="ghost-btn" type="submit">
+											Guardar código da {store.label}
+										</button>
+									</form>
+								</li>
+							))
+						}
+					</ul>
+					</section>
+					<button
+						id="wipe-app"
+						class="mt-3 w-full py-2 text-center text-[0.8rem] font-bold text-muted underline decoration-pink/40 underline-offset-4"
+						type="button"
+					>
+						Apagar senha e configurações deste aparelho
+					</button>
+				</div>
+
+				<div class="mt-4 grid items-start gap-4 lg:grid-cols-2">
+					<div class="flex flex-col gap-4">
+						<div>
+							<label for="product-url" class="text-[0.85rem] font-extrabold text-ink">Link do produto</label>
+							<textarea
+								id="product-url"
+								class="field mt-1 min-h-[6.5rem] resize-y"
+								inputmode="url"
+								enterkeyhint="done"
+								autocomplete="off"
+								placeholder="Cola aqui o link da Amazon, Shopee, Mercado Livre ou TikTok Shop"
+							></textarea>
+							<p id="store-note" class="store-note mt-2" hidden></p>
+						</div>
+
+						<fieldset>
+							<legend class="text-[0.85rem] font-extrabold text-ink">Quais selos?</legend>
+							<p class="mt-0.5 text-[0.78rem] font-semibold text-muted">Toque para marcar ou desmarcar. Pode usar 1, 2 ou os 3.</p>
+							<div id="seal-group" class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3" role="group" aria-label="Selos da indicação">
+								{
+									SEALS.map((item, index) => (
+										<button
+											class:list={[
+												'seal',
+												item.id === 'tested' && 'is-tested',
+												item.id === 'offer' && 'is-offer',
+												item.id === 'friends' && 'is-friends',
+											]}
+											type="button"
+											aria-pressed={item.id === 'offer' ? 'true' : 'false'}
+											data-seal={item.id}
+										>
+											<span class="text-[1.15rem] leading-none" aria-hidden="true">
+												{index === 0 ? '💖' : index === 1 ? '💛' : '💚'}
+											</span>
+											<span class="mt-1 block text-[0.78rem] font-extrabold leading-tight text-ink">{item.label}</span>
+										</button>
+									))
+								}
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="lg:sticky lg:top-4">
+						<p class="text-[0.85rem] font-extrabold text-ink">Como vai no WhatsApp</p>
+						<div class="preview mt-2 whitespace-pre-wrap break-words px-4 py-3.5 text-[0.95rem] font-semibold leading-relaxed text-ink">
+							<p id="preview-text"></p>
+						</div>
+						<div class="mt-3 hidden gap-2 lg:flex">
+							<button id="copy-text" class="wa-btn flex-1" type="button" disabled>
+								<Icon name="copy" class="size-4" />
+								<span class="copy-label">Copiar textinho</span>
+							</button>
+							<button id="copy-link" class="ghost-btn" type="button" disabled>
+								<span class="copy-label">Só o link</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<div
+			id="sticky-copy"
+			class="fixed inset-x-0 bottom-0 z-20 border-t border-pink/15 bg-blush px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
+			hidden
+		>
+			<div class="mx-auto flex max-w-[430px] gap-2">
+				<button class="wa-btn flex-1" type="button" data-sticky-copy disabled>
+					<Icon name="copy" class="size-4" />
+					<span class="copy-label">Copiar textinho</span>
+				</button>
+			</div>
+		</div>
+		<p id="copy-live" class="sr-only" aria-live="polite"></p>
+
+		<script>
+			import '../scripts/gerar';
+		</script>
+	</body>
+</html>
+
+<style>
+	.field {
+		display: block;
+		width: 100%;
+		border-radius: 1rem;
+		border: 1px solid color-mix(in srgb, var(--color-pink) 28%, white);
+		background: white;
+		padding: 0.8rem 0.95rem;
+		font: inherit;
+		font-weight: 600;
+		color: var(--color-ink);
+	}
+
+	.field::placeholder {
+		color: color-mix(in srgb, var(--color-muted) 78%, var(--color-ink));
+		opacity: 1;
+	}
+
+	.field:focus-visible {
+		outline: 2px solid var(--color-pink);
+		outline-offset: 2px;
+	}
+
+	.primary-btn,
+	.wa-btn,
+	.ghost-btn,
+	.seal {
+		min-height: 48px;
+		border-radius: 999px;
+		font: inherit;
+		font-weight: 800;
+		transition:
+			background-color 200ms var(--ease-out-quart),
+			box-shadow 200ms var(--ease-out-quart),
+			border-color 200ms var(--ease-out-quart);
+	}
+
+	.primary-btn {
+		background: var(--color-pink);
+		color: white;
+	}
+
+	.primary-btn:hover {
+		background: var(--color-pink-deep);
+	}
+
+	.wa-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.45rem;
+		background: var(--color-wa);
+		color: white;
+		box-shadow: 0 4px 14px rgba(18, 140, 126, 0.28);
+	}
+
+	.wa-btn:hover:not(:disabled) {
+		background: var(--color-wa-deep);
+	}
+
+	.wa-btn:disabled,
+	.ghost-btn:disabled {
+		opacity: 0.45;
+		cursor: not-allowed;
+		box-shadow: none;
+	}
+
+	.wa-btn.is-copied {
+		background: var(--color-leaf);
+		box-shadow: none;
+	}
+
+	.ghost-btn {
+		border: 1px solid color-mix(in srgb, var(--color-pink) 28%, white);
+		background: white;
+		color: var(--color-ink);
+	}
+
+	.ghost-btn:hover:not(:disabled) {
+		background: #fffafc;
+	}
+
+	.seal {
+		border-radius: 1.1rem;
+		border: 1.5px solid color-mix(in srgb, var(--color-pink) 22%, white);
+		background: white;
+		padding: 0.7rem 0.6rem;
+		text-align: center;
+	}
+
+	.seal:hover {
+		background: #fffafc;
+	}
+
+	.seal[aria-pressed='true'] {
+		border-color: var(--color-pink);
+		background: var(--color-blush-soft);
+	}
+
+	.seal.is-tested[aria-pressed='true'] {
+		border-color: var(--color-pink);
+		background: var(--color-blush-soft);
+	}
+
+	.seal.is-offer[aria-pressed='true'] {
+		border-color: var(--color-fire);
+		background: var(--color-fire-soft);
+	}
+
+	.seal.is-friends[aria-pressed='true'] {
+		border-color: var(--color-leaf);
+		background: var(--color-leaf-soft);
+	}
+
+	.preview {
+		border-radius: 1.15rem 1.15rem 1.15rem 0.35rem;
+		background: #d9fdd3;
+		box-shadow: 0 2px 0 rgba(16, 80, 58, 0.06);
+	}
+
+	.store-note {
+		border-radius: 0.9rem;
+		padding: 0.65rem 0.8rem;
+		font-size: 0.8rem;
+		font-weight: 700;
+		line-height: 1.35;
+	}
+
+	.store-note[data-tone='ok'] {
+		background: var(--color-leaf-soft);
+		color: color-mix(in srgb, var(--color-leaf) 70%, var(--color-ink));
+	}
+
+	.store-note[data-tone='warn'] {
+		background: var(--color-fire-soft);
+		color: color-mix(in srgb, #9a4b16 55%, var(--color-ink));
+	}
+
+	.store-note[data-tone='error'] {
+		background: var(--color-error-soft);
+		color: var(--color-error);
+	}
+
+	.store-status.is-saved {
+		color: color-mix(in srgb, var(--color-leaf) 62%, var(--color-ink));
+	}
+
+	.error-msg {
+		font-size: 0.8rem;
+		font-weight: 700;
+		line-height: 1.35;
+		color: var(--color-error);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.primary-btn,
+		.wa-btn,
+		.ghost-btn,
+		.seal {
+			transition: none;
+		}
+	}
+</style>

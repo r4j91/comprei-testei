@@ -1,0 +1,19 @@
+---
+import CategoryIcon from './CategoryIcon.astro';
+
+interface Category {
+	id: string;
+	title: string;
+}
+
+interface Props {
+	category: Category;
+}
+
+const { category } = Astro.props;
+---
+
+<li class="flex w-[30%] min-w-[5.4rem] max-w-[7.2rem] flex-col items-center gap-1.5 text-center sm:w-auto sm:min-w-[5.8rem]">
+	<CategoryIcon id={category.id} compact />
+	<p class="text-[0.72rem] font-extrabold leading-tight text-ink">{category.title}</p>
+</li>

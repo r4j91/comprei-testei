@@ -3,7 +3,7 @@ interface Props {
 	class?: string;
 }
 
-const { class: className = 'w-[220px]' } = Astro.props;
+const { class: className = 'max-w-[148px] sm:max-w-[168px]' } = Astro.props;
 ---
 
 <img
@@ -11,7 +11,7 @@ const { class: className = 'w-[220px]' } = Astro.props;
 	alt="Comprei Testei"
 	width="1254"
 	height="1254"
-	class:list={['mx-auto block h-auto w-full max-w-[220px] select-none sm:max-w-[240px]', className]}
+	class:list={['mx-auto block h-auto w-full select-none', className]}
 	decoding="async"
 	loading="eager"
 />
