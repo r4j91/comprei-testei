@@ -6,8 +6,8 @@
 	"scope": "/gerar/",
 	"display": "standalone",
 	"orientation": "portrait",
-	"background_color": "#fff5f7",
-	"theme_color": "#e84c89",
+	"background_color": "#ffe4ec",
+	"theme_color": "#ffe4ec",
 	"lang": "pt-BR",
 	"icons": [
 		{

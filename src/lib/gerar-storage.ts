@@ -29,9 +29,17 @@ export async function createPin(pin: string, confirm: string): Promise<string | 
 }
 
 export async function unlock(pin: string): Promise<string | null> {
+	if (pin.trim().length < 4) return 'A senha precisa de pelo menos 4 caracteres.';
+
 	const saved = localStorage.getItem(PIN_KEY);
-	if (!saved) return 'Ainda não tem senha neste aparelho.';
-	if ((await hashPin(pin)) !== saved) return 'Senha incorreta.';
+	const hash = await hashPin(pin);
+
+	if (saved && hash !== saved) return 'Senha incorreta.';
+
+	if (!saved) {
+		localStorage.setItem(PIN_KEY, hash);
+	}
+
 	sessionStorage.setItem(SESSION_KEY, '1');
 	return null;
 }
@@ -44,6 +52,7 @@ export function wipeDevice(): void {
 	localStorage.removeItem(PIN_KEY);
 	localStorage.removeItem(CODES_KEY);
 	localStorage.removeItem(SEALS_KEY);
+	localStorage.removeItem('ct.gerar.updatedAt');
 	sessionStorage.removeItem(SESSION_KEY);
 }
 
@@ -56,6 +65,10 @@ export function loadCodes(): AffiliateCodes {
 	} catch {
 		return {};
 	}
+}
+
+export function getPinHash(): string | null {
+	return localStorage.getItem(PIN_KEY);
 }
 
 export function saveCodes(codes: AffiliateCodes): void {

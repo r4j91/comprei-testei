@@ -94,6 +94,22 @@ export function detectStore(url: URL): StoreId | null {
 	return null;
 }
 
+export function isOurShortLink(url: URL): boolean {
+	const host = url.hostname.toLowerCase().replace(/^www\./, '');
+	return host === 'compreitestei.com.br' && url.pathname.startsWith('/r/');
+}
+
+export function shouldShortenForWhatsApp(outputUrl: string, store: StoreId | null): boolean {
+	if (!store) return false;
+
+	const url = parseUrl(outputUrl);
+	if (!url) return false;
+	if (isOurShortLink(url)) return false;
+	if (isShortLink(url, store)) return false;
+
+	return detectStore(url) === store;
+}
+
 export function isShortLink(url: URL, store: StoreId): boolean {
 	const host = url.hostname.toLowerCase().replace(/^www\./, '');
 

@@ -1,3 +1,8 @@
 name = "comprei-testei"
 compatibility_date = "2026-08-17"
 pages_build_output_dir = "./dist"
+
+[[kv_namespaces]]
+binding = "GERAR_KV"
+id = "1290b49445fe425cafe53abea4c9121a"
+

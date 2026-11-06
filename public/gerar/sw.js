@@ -1,4 +1,4 @@
-const CACHE = 'comprei-testei-gerar-v1';
+const CACHE = 'comprei-testei-gerar-v4';
 const ASSETS = [
 	'/gerar/',
 	'/gerar/manifest.webmanifest',
