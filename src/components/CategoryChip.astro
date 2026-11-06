@@ -13,7 +13,7 @@ interface Props {
 const { category } = Astro.props;
 ---
 
-<li class="flex w-[30%] min-w-[5.4rem] max-w-[7.2rem] flex-col items-center gap-1.5 text-center sm:w-auto sm:min-w-[5.8rem]">
+<li class="flex min-w-0 flex-col items-center gap-1.5 text-center">
 	<CategoryIcon id={category.id} compact />
-	<p class="text-[0.72rem] font-extrabold leading-tight text-ink">{category.title}</p>
+	<p class="whitespace-nowrap text-[0.72rem] font-extrabold leading-tight text-ink">{category.title}</p>
 </li>

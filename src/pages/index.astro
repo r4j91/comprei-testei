@@ -68,11 +68,39 @@ const { brand, group, categories, categoriesTitle, stores, legend } = data;
 				<GroupInvite group={group} />
 
 				<div class="flex flex-col gap-3.5">
+					<section aria-labelledby="stores-title">
+						<h2 id="stores-title" class="text-center text-[0.92rem] font-bold text-ink lg:text-left">
+							Prefere procurar as ofertas por loja?
+						</h2>
+						<div class="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2">
+							{
+								stores.map((store) => (
+									<a
+										href={store.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="flex h-12 items-center justify-center rounded-2xl bg-white px-1.5 shadow-[0_3px_8px_rgba(232,76,137,0.1)] transition-[background-color,box-shadow] duration-200 hover:bg-[#fffafc] hover:shadow-[0_4px_8px_rgba(232,76,137,0.16)]"
+									>
+										{/* TikTok's logo is 2:1 with stacked text, so it needs more height to read at the same size */}
+									<StoreLogo
+										id={store.id}
+										class:list={[
+											'w-auto max-w-[86px] object-contain object-center',
+											store.id === 'tiktok-shop' ? 'h-10' : 'h-7',
+										]}
+									/>
+										<span class="sr-only">{store.name}</span>
+									</a>
+								))
+							}
+						</div>
+					</section>
+
 					<section aria-labelledby="categories-title">
 						<h2 id="categories-title" class="text-center text-[0.92rem] font-extrabold text-ink lg:text-left">
 							{categoriesTitle}
 						</h2>
-						<ul class="mt-2.5 flex flex-wrap justify-center gap-x-2 gap-y-3 lg:justify-start">
+						<ul class="mt-2.5 grid grid-cols-5 gap-x-1">
 							{categories.map((category) => <CategoryChip category={category} />)}
 						</ul>
 					</section>
@@ -98,27 +126,6 @@ const { brand, group, categories, categoriesTitle, stores, legend } = data;
 					</section>
 				</div>
 			</div>
-
-			<section class="mt-4" aria-labelledby="stores-title">
-				<h2 id="stores-title" class="text-center text-[0.92rem] font-bold text-ink">
-					Prefere procurar as ofertas por loja?
-				</h2>
-				<div class="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-					{
-						stores.map((store) => (
-							<a
-								href={store.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="flex h-12 items-center justify-center rounded-2xl bg-white px-1.5 shadow-[0_3px_8px_rgba(232,76,137,0.1)] transition-[background-color,box-shadow] duration-200 hover:bg-[#fffafc] hover:shadow-[0_4px_8px_rgba(232,76,137,0.16)]"
-							>
-								<StoreLogo id={store.id} class="h-7 w-auto max-w-[86px] object-contain object-center" />
-								<span class="sr-only">{store.name}</span>
-							</a>
-						))
-					}
-				</div>
-			</section>
 
 			<section class="mt-3.5 flex flex-col gap-2 sm:flex-row" aria-label="Redes e site">
 				<a
